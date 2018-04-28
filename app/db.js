@@ -2,13 +2,14 @@ const mongo = require('mongodb').MongoClient;
 const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = process.env.DB_NAME;
 
+let _db;
 let _dbObj;
 
 const connectDB = (callback) => {
     try {
         mongo.connect(MONGODB_URI, (err, db) => {
-            let dbObj = db.db(DB_NAME);
-            _dbObj = dbObj;
+            _db = db;
+            _dbObj = db.db(DB_NAME);
             return callback(err);
         })
     } catch(e) {
@@ -16,8 +17,8 @@ const connectDB = (callback) => {
     }
 }
 
-const getDB = () => _dbObj;
+const getDBObj = () => _dbObj;
 
-const disconnectDB = () => _dbObj.close();
+const disconnectDB = () => { _db.close(); }
 
-module.exports = { connectDB, getDB, disconnectDB };
+module.exports = { connectDB, getDBObj, disconnectDB };
