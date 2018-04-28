@@ -6,9 +6,9 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.get('/new/:link', (req, res) => {
+router.get('/new/:link', async (req, res) => {
     let link = req.params.link;
-    let results = shortener(link);
+    let results = await shortener(link);
     res.json(results);
 });
 
