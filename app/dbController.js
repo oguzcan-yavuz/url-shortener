@@ -10,7 +10,9 @@ db.connectDB((err) => {
 function insertShortLink(result) {
     // inserts new original-short link pair to the database
     let urls = dbObj.collection('urls');
-    urls.insert(result, (err, data) => {
+    // insert changes result, make a copy of it and insert that instead
+    let copyResult = Object.assign({}, result);
+    urls.insert(copyResult, (err, data) => {
         if(err) throw err;
     })
 }
