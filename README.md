@@ -1,6 +1,9 @@
 # url-shortener
 URL Shortener Microservice
 
+[Freecodecamp challange link](https://www.freecodecamp.org/challenges/url-shortener-microservice)
+[Heroku link](https://hidden-sierra-79746.herokuapp.com/)
+
 ### Notlar
 
 - .env icerisinde degisken kullanimi?
