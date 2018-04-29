@@ -30,5 +30,8 @@
     "serve-favicon": "^2.5.0",
     "sha1": "^1.1.1",
     "valid-url": "^1.0.9"
+  },
+  "engines": {
+    "node": "9.11.1"
   }
 }

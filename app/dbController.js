@@ -1,13 +1,10 @@
 const db = require('./db.js');
 let dbObj;
 
-console.log('dbController.js');
-
 // create an instance of database at start
 db.connectDB((err) => {
     if(err) throw err;
     dbObj = db.getDBObj();
-    console.log("connection called from db controller");
 });
 
 function insertShortLink(result) {
