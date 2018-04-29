@@ -2,19 +2,16 @@ const validUrl = require('valid-url');
 const dbController = require('./dbController.js');
 const hasher = require('./hasher.js');
 
-const shortener = async (url) => {
-    if(validUrl.isUri(url) === undefined) {// check if the url is valid
-        console.log("not valid");
+const shortener = async (originalUrl, websiteUrl) => {
+    if(validUrl.isUri(originalUrl) === undefined)   // check if the url is valid
         return Promise.resolve({"error": "Wrong url format"});
-    }
-    let shortened = await dbController.shortened(url);  // check if the same url is already shortened
+    let shortened = await dbController.shortened(originalUrl);  // check if the same url is already shortened
     if(shortened !== false)
         return Promise.resolve(shortened);
-    console.log("shortened:", shortened);
-    let shortenedUrl = hasher(url);     // if url is valid and not exist in DB, create new hash and update DB
-    let result = {"original_url": url, "short_url": shortenedUrl};
-    console.log("new url:", result);
-    await dbController.updateDB(result);
+    // if url is valid and not exist in DB, create new hash and update DB
+    let shortenedUrl = websiteUrl + hasher(originalUrl);
+    let result = {"original_url": originalUrl, "short_url": shortenedUrl};
+    await dbController.insertShortLink(result);
     return Promise.resolve(result);
 }
 
