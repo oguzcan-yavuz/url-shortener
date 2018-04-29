@@ -3,11 +3,10 @@ const shortener = require('./shortener.js');
 const redirector = require('./redirector.js');
 var router = express.Router();
 
-// TODO: create home page
-
 // main page router
 router.get('/', (req, res) => {
-    res.render('index');
+    let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    res.render('index', { url: fullUrl });
 });
 
 // router for redirecting short urls to their original urls

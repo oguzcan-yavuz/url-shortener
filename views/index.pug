@@ -1,6 +1,45 @@
 doctype html
 html(lang=en)
     head
-        title Url Shortenen Microservice
+        title Url Shortener Microservice
+        link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+        link(rel="stylesheet", type="text/css", href="/static/style.css")
     body
-        h2 url shortener!
+        div(class="container title")
+            h2 Url Shortener Microservice
+        div(class="container")
+            p 
+                | Created by 
+                a(href="https://www.freecodecamp.org/yavuzovski", target="_blank") yavuzovski
+            ol(class="stories") User stories:    
+                li.
+                    I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.    
+                li.
+                    If I pass an invalid URL that doesn't follow the valid http://www.example.com format, 
+                    the JSON response will contain an error instead.                li.
+                    If it does, it returns both the Unix timestamp and the natural language form of that date.
+                li.
+                    When I visit that shortened URL, it will redirect me to my original link.
+        div(class="container")
+            ul(class="examples") Creating new urls:
+                br
+                code #{url}new/&lt;original url&gt;
+                br
+                code #{url}new/https://www.youtube.com/watch?v=Qe500eIK1oA
+                li Output:
+                code {"original_url":"https://www.youtube.com/watch?v=Qe500eIK1oA","short_url":"#{url}abb144"}
+                br
+                br
+                li Using shortened urls:
+                code #{url}abb144
+                li Will redirect to:
+                code https://www.youtube.com/watch?v=Qe500eIK1oA
+        div(class="container")
+            footer
+                h2 AROUND THE WEB
+                a.button(href='https://github.com/yavuzovski', target='_blank')
+                  img(src='http://sciactive.com/pnotify/includes/github-icon.png')
+                a.button(href='https://www.linkedin.com/in/oguzcanyavuz', target='_blank')
+                  img(src='http://www.plasticsuk.com/images/in-icon.png')
+                a.button(href='https://www.freecodecamp.com/yavuzovski', target='_blank')
+                  img(src='https://cdn-images-2.medium.com/fit/c/32/32/1*MotlWcSa2n6FrOx3ul89kw.png')

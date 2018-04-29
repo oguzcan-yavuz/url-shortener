@@ -1,0 +1,17 @@
+div.title {
+    margin-top: 20px;
+}
+
+ol.stories {
+    list-style-position: inside;
+    list-style-type: katakana-iroha;
+}
+
+ul.examples {
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+footer {
+    margin-top: 40px;
+}
