@@ -8,3 +8,4 @@ URL Shortener Microservice
 
 - .env icerisinde degisken kullanimi?
 - .env degiskenlerini heroku'da heroku config ile ayarlamak
+- don't forget to handle favicon.ico
