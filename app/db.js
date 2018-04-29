@@ -10,12 +10,17 @@ const connectDB = (callback) => {
         mongo.connect(MONGODB_URI, (err, db) => {
             _db = db;
             _dbObj = db.db(DB_NAME);
+            _dbObj.createCollection('urls', {
+                capped: true,
+                size: 513802240
+            })
             return callback(err);
         })
     } catch(e) {
         throw e;
     }
 }
+
 
 const getDBObj = () => _dbObj;
 
